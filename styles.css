@@ -1,0 +1,59 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(to right, #8A2BE2, #EE82EE);
+}
+
+.calculator-grid {
+display: grid;
+justify-content: center;
+margin-top: 2rem;
+grid-template-columns: repeat(4, 6rem); /*количество и ширина столбцов в grid-сетке*/
+grid-template-rows: minmax(7rem, auto) repeat(5, 6rem); /*Первая строка будет иметь минимальную высоту 7rem.Если содержимое строки требует больше места, её высота будет автоматически увеличена (auto)*/
+}
+/*Итог: сетка будет иметь 6 строк и 4 столбца:
+Первая строка: минимальная высота 7rem, но может увеличиваться.
+Остальные 5 строк: фиксированная высота 6rem.*/
+
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none; /*убирает стандартный контур*/
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.calculator-grid > button:hover, 
+.calculator-grid > button:focus {
+    background-color: rgba(255, 255, 255, .9);
+
+}
+
+.span-two {
+    grid-column: span 2; /*в grid-сетке должна занимать 2 колонки*/
+}
+
+.output {
+    grid-column: 1 / -1; /*элемент должен занимать все колонки в grid-сетке, т.е. соответсвенно дисплей кальтулятора*/
+    background-color: rgba(0, 0, 0, .75); /*последнее - прозрачность*/
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: .0.75rem;
+    word-wrap: break-word; /*разбивает слова только при необходимости, сохраняя естественные границы*/
+    word-break: break-all;/*разбивает слова в любом месте, даже если это нарушает правила языка*/
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color: white;
+    font-size: 2.5rem;
+}
